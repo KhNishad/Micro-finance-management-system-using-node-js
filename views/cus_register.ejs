@@ -1,0 +1,73 @@
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="/css/register.css">
+<script src="/js/register.js"></script>
+<h4 style="text-align: center; color:#17A2B8;" class="p-4 bg-white">Customer Registration Form</h4>
+<form action="/cus_register" method="POST" enctype="multipart/form-data">
+    <label>
+        <p class="label-txt">ENTER YOUR NAME</p>
+        <input type="text" id="name" name="name" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+    <label>
+        <p class="label-txt">ENTER YOUR CONTACT</p>
+        <input type="text" id="contact" name="contact" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <label>
+        <p class="label-txt">ENTER YOUR ADDRESS</p>
+        <input type="text" name="address" id="address" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+    <label>
+        <p class="label-txt">ENTER YOUR ASSET</p>
+        <input type="text" name="asset" id="asset" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+    <label>
+        <p class="label-txt">ASSET PRICE</p>
+        <input type="text" name="p_asset" id="p_asset" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+    <div class="form-group">
+        <h5 class="text-info" style ="color: #C5E1A5;">Select Scheme & Image</h6>
+        <select name="scheme" class="form-control" id="scheme" required>
+            <option readonly value="">Select Loan-Type</option>
+
+            <% print.forEach(function (user) { %>
+
+
+            <option value="<%= user.scheme_id %>"><%= user.name%></option>
+            <option hidden id="r_asset" value="<%= user.r_asset %>"></option>
+
+            <% }) %>
+
+        </select>
+    </div>
+        <div class="form-group" >
+            <div class="col-sm-9">
+                
+                 <input  class="form-control" type="file" id="img" name="img">
+            </div>
+        </div>
+    </div>
+    <button type="submit">submit</button>
+
+    
+   
+</form>

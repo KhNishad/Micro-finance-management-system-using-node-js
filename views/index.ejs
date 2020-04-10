@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/header.css">
+</head>
+
+<body>
+    <!-- nav bar  -->
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand text-info" href="#">MicroVest</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-home"></i>
+                    Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/view_scheme">
+                    <i class="fa fa-envelope-o">
+                        <!-- <span class="badge badge-danger">11</span> -->
+                    </i>
+                    Schemes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/view_loan">
+                    <i class="fa fa-globe">
+                        <!-- <span class="badge badge-success">11</span> -->
+                    </i>
+                    Loans
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/installment">
+                    <i class="fa fa-money">
+                        <!-- <span class="badge badge-success">11</span> -->
+                    </i>
+                    Installments
+                </a>
+            </li>
+            
+        </ul>
+        <ul class="navbar-nav ">
+            <li class="nav-item">
+                <a class="nav-link" href="/today">
+                   
+                        <i class="fa fa-bell text-success ">
+                            <%if(print[0]){%>
+                            <span class="badge badge-danger "><%=print[0].t%></span>
+                            <%}%>
+                        </i>
+                    Today
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <i class="fa fa-sign-out text-danger">
+                        
+                    </i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+  
+    <!-- nav bar ends -->
+    <div class="container p-5">
+        <div class="row mx-auto">
+            <div class="col-sm-6 col-lg-4 text-center">
+                <div class="card">
+                    <div class="card-body bg-dark text-white">
+                        <h5 class="card-title">Customer Registration</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register">
+                            Register
+                        </button> -->
+                        <a href="/cus_register" class="btn btn-success">Register</a>
+                        <a href="/cus_view" class="btn btn-info">View Customer</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 text-center">
+                <div class="card bg-dark text-white">
+                    <div class="card-body" >
+                        <h5 class="card-title">Add Schemes here</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/scheme" class="btn btn-success">Add Scheme</a>
+                        <a href="/view_scheme" class="btn btn-primary">View Scheme</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 text-center">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Loan Information</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/view_loan" class="btn btn-primary">View Loans</a>
+                        <!-- <a href="/view_scheme" class="btn btn-primary">View Scheme</a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+
+            </div>
+            <!-- <img src="uploads/brand.PNG" alt=""> -->
+            <div class="col-sm-6 col-lg-4 text-center p-3">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Installment</h5>
+                        <p>Give Installments here.</p>
+                        <a href="/installment" class="btn btn-info">Pay</a>
+                        <!-- <a href="/view_scheme" class="btn btn-primary">View Scheme</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal starts -->
+    <!-- Button trigger modal -->
+    
+
+
+</body>
+</html>

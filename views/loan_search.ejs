@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Scheme ID</th>
+        
+                    <th scope="col">Name</th>
+                    <th scope="col">Scheme Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Remaining Amount</th>
+                    <th scope="col">Number of installment</th>
+                    <th scope="col">Remaining Installment</th>
+                    <th scope="col">Installment Amount</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <% print.forEach(function (user) { %>
+                <tr>
+                    <td><%= user.cus_id %></td>
+                    <td><%= user.scheme_id %></td>
+        
+                    <td><%= user.cus_name %></td>
+                    <td><%= user.scheme_name %></td>
+                    <td><%= user.scheme_amount %></td>
+                    <td><%= user.remaining_amount %></td>
+                    <td><%= user.installment_no %></td>
+                    <td><%= user.installment_remaining %></td>
+                    <td><%= user.installment_amount %></td>
+                    <td><%= user.date %></td>
+                    <td>
+                        <a href="/installment2/<%=user.cus_id %>" class="btn btn-primary" <% var id  = user.cus_id %></a>Pay</a>
+                    </td>
+                    <td>
+                        <a href="/invoice/<%=user.cus_id %>" class="btn btn-success">Invoice</a>
+        
+                    </td>
+        
+                    <% }) %>
+        
+                </tr>
+        
+            </tbody>
+        </table>
+        </div>
+    </div>
+</body>
+</html>

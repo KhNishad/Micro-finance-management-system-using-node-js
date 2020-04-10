@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+                <link rel="stylesheet" href="/css/header.css">
+
+</head>
+
+<body>
+    <!-- nav bar  -->
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand text-info" href="#">MicroVest</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index">
+                    <i class="fa fa-home"></i>
+                    Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/view_scheme">
+                    <i class="fa fa-envelope-o">
+                        <!-- <span class="badge badge-danger">11</span> -->
+                    </i>
+                    Schemes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/view_loan">
+                    <i class="fa fa-globe">
+                        <!-- <span class="badge badge-success">11</span> -->
+                    </i>
+                    Loans
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/installment">
+                    <i class="fa fa-money">
+                        <!-- <span class="badge badge-success">11</span> -->
+                    </i>
+                    Installments
+                </a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav ">
+           
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <i class="fa fa-sign-out text-danger">
+
+                    </i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+    <!-- nav bar ends -->
+
+    <div class="container p-2">
+        <form action="/search2" class="" method="POST">
+            <div class="form-group">
+                <div class="input-group">
+        
+                    <!-- Search form -->
+                    <input class="form-control  search" type="number" id="search" name="search" placeholder="Search Customer ID"
+                        aria-label="Search">
+                    <!-- <button type="submit" class="btn btn-primary">Search</button> -->
+                </div>
+            </div>
+        </form>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                        <th scope="col">Customer ID</th>
+                    <th scope="col">Scheme ID</th>
+             
+                    <th scope="col">Name</th>
+                    <th scope="col">Scheme</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Remaining Amount</th>
+                    <th scope="col">Number of installment</th>
+                    <th scope="col">Remaining Installment</th>
+                    <th scope="col">Installment Amount</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% print.forEach(function (user) { %>
+                <tr>
+                    <td><%= user.cus_id %></td>
+                    <td><%= user.scheme_id %></td>
+                    
+                    <td><%= user.cus_name %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.amount %></td>
+                    <td><%= user.remaining_amount %></td>
+                    <td><%= user.no_installment %></td>
+                    <td><%= user.installment_remaining %></td>
+                    <td><%= user.installment_amount %></td>
+                    <td><%= user.date %></td>
+                    <td>
+                        <a href="/installment2/<%=user.cus_id %>" class="btn btn-primary"
+                            <% var id  = user.cus_id %></a>Pay</a>
+                    </td>
+                    <td>
+                        <a href="/invoice/<%=user.cus_id %>" class="btn btn-success">Invoice</a>
+
+                    </td>
+
+                    <% }) %>
+
+                </tr>
+
+            </tbody>
+        </table>
+        </div>
+
+
+        <!-- modal -->
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+
+.brand_logo {
+			height: 50px;
+            width: 50px;
+            position: relative;
+            display: block;
+            background-size: cover;
+            background-repeat: no-repeat;
+            
+            
+			/* border-radius: 30%; */
+			/* border: 1px solid white; */
+        }
+.search {
+}
+       

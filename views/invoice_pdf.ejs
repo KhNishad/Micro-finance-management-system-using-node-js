@@ -1,0 +1,173 @@
+<!-- navbar -->
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 5px;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+        .head{
+            color: blue;
+        }
+        .para{
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<div class="container">
+
+    <div class="row profile">
+
+        <div class="col-md-3">
+
+            <div class="profile-sidebar">
+                <center>
+                    <h2 class="head">MicroVest</h1>
+                    <i class="para">In Interest We Trust</i>
+                </center>
+
+
+                <div class="profile-usermenu">
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            Customer Info
+                        </div>
+                    </div>
+                    <ul class="nav">
+                        <li>
+
+                            <i class="glyphicon glyphicon-plus"></i>
+                            ID: <%=print[0].cus_id%> </a>
+                        </li>
+                        <li>
+                            <i class="glyphicon glyphicon-user"></i>
+                            Name: <%=print[0].cus_name%> </a>
+                        </li>
+                        <li class="active">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Address: <%=print[0].cus_address%> </a>
+                        </li>
+                        <li class="active">
+                            <i class="glyphicon glyphicon-phone"></i>
+                            Contact: <%=print[0].cus_contact%> </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Loan Info
+                    </div>
+                </div>
+                <div class="profile-usermenu">
+                    <%var mot = 0 %>
+                    <% var fine  = 0 %>
+                    <% print.forEach(function (user) { %>
+                    <% mot  = mot + user.amount %>
+                    <% fine = fine + user.fine %>
+                    
+                    <% }) %>
+                    <% var remaining = print[0].scheme_amount - mot %>
+                    
+                    <ul class="nav">
+                        <li>
+                            Scheme ID: <%=print[0].scheme_id%> 
+                        </li>
+                        <li class="active">
+
+                            Name: <%=print[0].scheme_name%> 
+                        </li>
+                        <li class="active">
+
+                           
+                            Amount Taken: <%=print[0].scheme_amount%> 
+                        </li>
+
+                       
+                        <li class="active">
+                                
+                                Remainings: <%=remaining%> 
+                        </li>
+                        <li>
+                               
+                                Total Fine: <%=fine%> 
+                        </li>
+                        <% if(remaining == 0){%>
+                        <li>
+                            
+                                
+                                You Loan is Over 
+                        </li>
+                        <%}%>
+                                                    <% if(remaining > 0){%>
+                        <li>
+                          
+                                
+                                You Loan is Running 
+                        </li>
+                        <%}%>
+                        <li>
+
+                           
+                            Taken Date: <%=print[0].date%> </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-9  text-center">
+            <div class="profile-content">
+                <center>
+                    <h4>Your Payment History</h4>
+                </center>
+                <center style="padding: 5px;">
+                    <table>
+
+                        <tr>
+                            <th scope="col">Installment NO#</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Remaining</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Fine</th>
+                            <th scope="col">date</th>
+                        </tr>
+
+
+                        <% var cnt=1 %>
+                        <% print.forEach(function (user) { %>
+                        <tr>
+                            <td><%= cnt++ %></td>
+                            <td><%= user.amount %></td>
+                            <td><%= user.remaining %></td>
+                            <td><%= user.status%></td>
+                            <td><%= user.fine%></td>
+                            <td><%= user.ins_date%></td>
+                            <% }) %>
+
+
+                    </table>
+                </center>
+
+            </div>
+        </div>
+    </div>
+</div>
+<h5></h5>
+<center>
+    <strong class="footer">Powered by <a href="#" target="_blank">Kh Nishad</a></strong>
+</center>
+<br>
+<br>

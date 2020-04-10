@@ -1,0 +1,145 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="text-center bg-dark p-5 text-white">Give Installments</h1>
+    <div class="container">
+        <div>
+            <form action="/installment" method="POST">
+
+                <div class="form-group text-align-center">
+                    <label for="lemail">ID</label>
+                    <input type="text" class="form-control" id="ID" name="ID" required
+                        value="<%=print[0].cus_id%>">
+
+                </div>
+                <div class="form-group">
+                    <label for="text">Amount</label>
+                    <input type="text" name="amount" class="form-control" id="amount" required
+                        value="<%=print[0].installment_amount%>">
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Date:</label>
+                    <input type="date" id="time" name="time">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <!-- <a href="/register"> Register </a> 
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html> -->
+
+
+
+
+<!--  -->
+
+
+
+<!-- test -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="/css/installment.css">
+<title>Pay Installment</title>
+
+<body class="hm-gradient">
+
+    <body class="hm-gradient">
+
+        <main>
+
+            <!--MDB Forms-->
+            <div class="container mt-4">
+
+                <div class="text-center darken-grey-text mb-4">
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Form register -->
+                                <form action="/installment" method="POST">
+                                    <h4 class="text-center pink-text font-bold py-4"><strong>Pay Loan Easy</strong></h3>
+                                        <div class="md-form">
+                                            <i class="fa fa-user prefix grey-text"></i>
+                                            <input type="text" id="ID" value="<%=print[0].cus_id%>" name="ID" class="form-control">
+                                            <label for="orangeForm-name37">Customer ID</label>
+                                        </div>
+                                       
+                                        <div class="md-form">
+                                            <i class="fa fa-money prefix grey-text"></i>
+                                            <input type="text" value="<%=print[0].installment_amount%>" id="amount" name="amount" class="form-control">
+                                            <label for="orangeForm-email37">Amount</label>
+                                        </div>
+                                        <div class="text-center">
+                                            <i class="fa fa-times prefix grey-text"></i>
+
+                                            <label for="birthday">Date</label>
+                                            <input type="date" id="time" name="time">
+                                        </div>
+                                        <div class="text-center py-4">
+                                            <button class="btn btn-outline-pink">Send <i
+                                                    class="fa fa-paper-plane-o ml-1"></i></button>
+                                        </div>
+                                </form>
+                                <!-- Form register -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+
+                <hr class="my-4">
+
+                <!-- <div class="text-center darken-grey-text mb-4">
+                    <h3 class="font-bold mb-3">Here you can find more Forms:</h3>
+                    <a class="btn btn-danger" href="https://mdbootstrap.com/components/forms/" target="_blank">Bootstrap
+                        Forms</a>
+                </div> -->
+
+            </div>
+            <!--MDB Forms-->
+
+        </main>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+
+    </body>

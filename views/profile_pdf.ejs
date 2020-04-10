@@ -1,0 +1,137 @@
+
+
+<!-- navbar -->
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 5px;
+            
+        }
+    
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+        .footer{
+            margin-top: 5px;
+        }
+        .head{
+            color: blue;
+        }
+    </style>
+</head>
+
+<div class="container">
+
+    <div class="row profile">
+
+        <div class="col-md-3">
+
+            <div class="profile-sidebar">
+                <center>
+                    <h2 class="head">MicroVest</strong>
+                </center>
+              
+
+                <div class="profile-usermenu">
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            Customer Info
+                        </div>
+                    </div>
+                    <ul class="nav">
+                        <li>
+                            
+                                <i class="glyphicon glyphicon-plus"></i>
+                                ID: <%=print[0].cus_id%> </a>
+                        </li>
+                        <li>
+                                <i class="glyphicon glyphicon-user"></i>
+                                Name: <%=print[0].cus_name%> </a>
+                        </li>
+                        <li class="active">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Address: <%=print[0].cus_address%> </a>
+                        </li>
+                        <li class="active">
+                                <i class="glyphicon glyphicon-phone"></i>
+                                Contact: <%=print[0].cus_contact%> </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        Loan Info
+                    </div>
+                </div>
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li>
+                                Scheme ID: <%=print[0].scheme_id%> </a>
+                        </li>
+                        <li class="active">
+                            
+                                Name: <%=print[0].scheme_name%> </a>
+                        </li>
+                        <li class="active">
+                            
+                                <i class="glyphicon glyphicon-usd"></i>
+                                Amount: <%=print[0].scheme_amount%> </a>
+                        </li>
+
+                        <li>
+                                <i class="glyphicon glyphicon-euro"></i>
+                                Installment: <%=print[0].installment_amount%> </a>
+                        </li>
+                        <li>
+                          
+                                <i class="glyphicon glyphicon-time"></i>
+                                Taken Date: <%=print[0].date%> </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-9  text-center">
+            <div class="profile-content">
+                <center><h4>Your Installment Schedule</h4></center>
+                <center style="padding: 5px;">
+                    <table>
+                       
+                            <tr>
+                                <th scope="col">Installment No</th>
+                                <th scope="col">Installment Dates</th>
+                            </tr>
+                     
+                        
+                            <% var cnt=1 %>
+                            <% print.forEach(function (user) { %>
+                            <tr>
+                                <td><%= cnt++ %></td>
+                                <td><%= user.Time %></td>
+                    
+                                <% }) %>
+                            </tr>
+                    
+                        
+                    </table>
+                </center>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<h5></h5>
+<center>
+    <strong class="footer">Powered by <a href="#" target="_blank">Kh Nishad</a></strong>
+</center>
+<br>
+<br>

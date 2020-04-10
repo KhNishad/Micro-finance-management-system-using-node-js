@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- nav bar  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand text-primary" href="#">Microvest</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active text-white" href="/index">Home <span
+                        class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link text-white" href="/view_loan">Loans</a>
+                <a class="nav-item nav-link text-white" href="/installment">Installment</a>
+                <a class="nav-item nav-link text-white" href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <!-- nav bar ends -->
+
+    <div class="container p-3">
+        <% if(print[0]){%>
+
+        
+       
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <!-- <th scope="col">Img</th> -->
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Asset</th>
+                    <th scope="col">Asset Price</th>
+                    <th scope="col">Scheme ID</th>
+                    <!-- <th scope="col">Scheme</th> -->
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <% print.forEach(function (user) { %>
+                <tr>
+
+                    <td><%= user.cus_id %></td>
+                    <!-- <td><div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic"
+                            src="http://localhost:3000/img/img_upload/<%=user.img%>" class="img-circle img-responsive"> </div> -->
+                    <!-- </td> -->
+                    <td><%= user.cus_name %></td>
+                    <td><%= user.cus_contact %></td>
+                    <td><%= user.cus_address %></td>
+                    <td><%= user.cus_asset %></td>
+                    <td><%= user.asset_price %></td>
+                    <td><%= user.scheme_id %></td>
+                    <!-- <td><%= user.scheme %></td> -->
+                    <td><%= user.date %></td>
+                    <td>
+                        <a href="/action/<%=user.cus_id %>" class="btn btn-primary" <% var id  = user.cus_id %></a>Edit</a>
+                        <a href="/info/<%=user.scheme_id%>/<%=user.cus_id%>" class="btn btn-info">Info</a>
+                        <a href="/profile/<%=user.cus_id%>" class="btn btn-success">Profile</a>
+
+                    </td>
+                    
+
+                    <% }) %>
+
+                </tr>
+
+            </tbody>
+        </table>
+      <%}%>
+    <%if (!print[0]){ %>
+
+    
+      <h1 class="text-center text-danger">No match found</h1>
+    <form action="/search" method="POST">
+        <div class="form-group">
+            <div class="input-group">
+    
+                <!-- Search form -->
+                <input class="form-control" type="text" id="search" name="search" placeholder="Search Again" aria-label="Search">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
+   <% } %>
+      
+    </div>
+
+        <!-- modal -->
+
+</body>
+
+</html>
