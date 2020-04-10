@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -65,4 +65,66 @@
     
 </body>
 
-</html>
+</html> -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="/css/register.css">
+<script src="/js/register.js"></script>
+<h4 style="text-align: center; color:#17A2B8;" class="p-4 bg-white">Add Scheme</h4>
+<form action="/scheme" method="POST">
+  
+    <label>
+        <p class="label-txt">SCHEME NAME</p>
+        <input type="text" id="name" name="name" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <label>
+        <p class="label-txt">AMOUNT</p>
+        <input type="text" name="Amount" id="Amount" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+    <label>
+        <p class="label-txt">REQUIRED ASSET</p>
+        <input type="text" name="r_asset" id="r_asset" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+    <label>
+        <div class="form-group">
+            <select name="Duration" class="form-control" id="Duration" required>
+                <option readonly value="">Select Duration-Type</option>
+        
+        
+        
+        
+                <option value="week" id="month">Week</option>
+                <option id="month" value="month">Month</option>
+        
+        
+        
+            </select>
+        </div>
+    </label>
+    <label>
+        <p class="label-txt">NO OF INSTALLMENTS</p>
+        <input type="text" id="instl" name="instl" class="input">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    
+    </div>
+    <button type="submit">submit</button>
+
+
+
+</form>
