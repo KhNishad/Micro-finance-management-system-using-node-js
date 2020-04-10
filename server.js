@@ -14,6 +14,7 @@ fs = require('fs');
 // app.use(flash(app));
 
 // session
+var port = process.env.port || 3000;
 
 app.use(session({
     secret: '2C44-4D44-WppQ38S',
