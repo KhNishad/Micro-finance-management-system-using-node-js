@@ -1,0 +1,1 @@
+This app is built with nodeJs express framework and sql database
