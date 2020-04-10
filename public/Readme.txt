@@ -1,0 +1,1 @@
+This a Micro finance app built with nodejs express framework and sql database.
