@@ -16,8 +16,15 @@ Customer info:
  Admin can search for customer ID and can see their history.
 
  If you want to run this software in your pc follow  the steps: clone or download this from here.
+
+ Take the database from database folder and import the databse to your database and keep the name same given in the file.
+
+
  #you must need to have node installed on your pc.
  #after downloading open the app in vscode(your editor) and run command form terminal > npm install
 
  if will install al the dependencies and then run the server.js in your browser hit server 3000 to see the result.
+
+
+ 
  
