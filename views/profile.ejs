@@ -78,7 +78,7 @@
                 </ul>
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a class="nav-link" href="/generateReport/<%=print[0].cus_id%>">
+                        <a class="nav-link" href="/generateReport/<%=print[0].cus_id%>" id="print">
                             <i class="fa fa-print text-success ">
                                 <span class="badge badge-danger "><%=print[0].t%></span>
                             </i>
@@ -227,6 +227,12 @@
         </center>
         <br>
         <br>
+
+        <!-- <script>
+            $("#print").click(function () {
+                    alert("Create PDF ?");
+                });
+        </script> -->
     </body>
     </html>
 

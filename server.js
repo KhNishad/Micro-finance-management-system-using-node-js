@@ -7,14 +7,7 @@ const path = require('path');
 var dateFormat = require('dateformat');
 let ejs = require('ejs');
 fs = require('fs');
-// const flash = require('express-flash-notification');
-// const cookieParser = require('cookie-parser');
-// app.use(cookieParser());
 
-// app.use(flash(app));
-
-// session
-// var port = process.env.port || 3000;
 
 app.use(session({
     secret: '2C44-4D44-WppQ38S',
@@ -138,7 +131,7 @@ app.get('/notifi',(req,res)=>{
 
 //render  registration
 
-app.get('/register',auth, (req, res) => {
+app.get('/register',(req, res) => {
     res.render('register.ejs')
 
 })
