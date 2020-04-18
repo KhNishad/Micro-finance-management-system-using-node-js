@@ -180,7 +180,7 @@ app.get('/index', auth,  (req, res) => {
             throw err;
         } else {
             obj = { print: result };
-            console.log(result[0].t);
+            console.log(result);
             
             res.render('index.ejs', obj);
         }
@@ -683,6 +683,10 @@ app.post('/installment', auth,function (req,res) {
                 else{
                     var date1 = new Date(results[0].Time);
                     var date2 = new Date(req.body.time); 
+                    var schedule_date = new Date(results[0].Time);
+                    schedule_date = schedule_date.toISOString().slice(0, 10)
+                    
+                    
                   
                var  tim2 =    date2.toISOString().slice(0, 7)
                  var   tim  =  date1.toISOString().slice(0, 7);
@@ -717,7 +721,8 @@ app.post('/installment', auth,function (req,res) {
                 "remaining": remaining,
                 "status": status,
                 "fine": fine,
-                ins_date: req.body.time
+                ins_date: req.body.time,
+                schedule_date: schedule_date
             }
             con.query('INSERT INTO installment SET ?', data, function (error, results, fields) {
                 if (error) throw res.send(error);
@@ -765,7 +770,7 @@ app.get('/invoice/:id', auth, (req, res) => {
     
     // console.log(did);
      var invoice ={};
-    con.query(`SELECT  customer.cus_id,customer.cus_name,customer.cus_address,customer.cus_contact,customer.scheme_name,customer.scheme_amount,customer.scheme_id,customer.installment_amount,customer.img,installment.install_id,installment.amount,installment.remaining,installment.status,installment.fine,customer.date,installment.ins_date FROM customer INNER JOIN installment ON customer.cus_id = installment.cus_id  where customer.cus_id = ${did}`, function (error, result) {
+    con.query(`SELECT  customer.cus_id,customer.cus_name,customer.cus_address,customer.cus_contact,customer.scheme_name,customer.scheme_amount,customer.scheme_id,customer.installment_amount,customer.img,installment.install_id,installment.amount,installment.remaining,installment.status,installment.fine,customer.date,installment.ins_date,installment.schedule_date FROM customer INNER JOIN installment ON customer.cus_id = installment.cus_id  where customer.cus_id = ${did}`, function (error, result) {
         if (error) {
             throw error;
         }
@@ -948,7 +953,7 @@ app.get("/generateReport/:id",auth, (req, res) => {
 app.get("/generateReport_invoice/:id",auth, (req, res) => {
     var id = req.params.id;
 
-    con.query(`SELECT  customer.cus_id,customer.cus_name,customer.cus_address,customer.cus_contact,customer.scheme_name,customer.scheme_amount,customer.scheme_id,customer.installment_amount,customer.img,installment.install_id,installment.amount,installment.remaining,installment.status,installment.fine,customer.date,installment.ins_date FROM customer INNER JOIN installment ON customer.cus_id = installment.cus_id  where customer.cus_id = ${id}`, function (error, result) {
+    con.query(`SELECT  customer.cus_id,customer.cus_name,customer.cus_address,customer.cus_contact,customer.scheme_name,customer.scheme_amount,customer.scheme_id,customer.installment_amount,customer.img,installment.install_id,installment.amount,installment.remaining,installment.status,installment.fine,customer.date,installment.ins_date,installment.schedule_date FROM customer INNER JOIN installment ON customer.cus_id = installment.cus_id  where customer.cus_id = ${id}`, function (error, result) {
         if (error) {
             throw error;
         }
@@ -998,14 +1003,14 @@ app.get('/today',(req,res)=>{
     var today = new Date((new Date()).getTime())
    today =  today.toISOString().slice(0, 10);
  
-    console.log(today);
+    //console.log(today);
     
-    con.query(`SELECT * from schedule WHERE Time = '${today}'`, function (error, results) {
+    con.query(`SELECT * from schedule WHERE Time = '${today}' AND status = 'unpaid'`, function (error, results) {
         if (error) {
             res.send(error)
         }
         else {
-           // console.log(results);
+            console.log(results);
             
             obj2 = { print: results };
             res.render('today.ejs', obj2);
