@@ -7,6 +7,7 @@ const path = require('path');
 var dateFormat = require('dateformat');
 let ejs = require('ejs');
 fs = require('fs');
+const bcrypt = require('bcrypt');
 
 
 app.use(session({
@@ -92,18 +93,7 @@ app.post('/login',(req,res) => {
             // console.log('The solution is: ', results);
             // future date creation
             var date2 = new Date((new Date()).getTime() + (2 * (30 * 86400000)))
-            // console.log(date2.toISOString().slice(0, 10));
-            
-            // for(var i =1;i<=12;i++)
-            // {
-            //     var date = new Date((new Date()).getTime() + (i*(30 * 86400000)))
-                
-            //     if (date.toISOString().slice(0, 10) == date2.toISOString().slice(0, 10) ){
-            //         console.log(date2.toISOString().slice(0, 10));
-                    
-            //     }
-                
-            // }
+           
             
             if (results.length > 0) {
                 if (results[0].pass == password) {
