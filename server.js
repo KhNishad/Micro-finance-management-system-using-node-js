@@ -249,7 +249,7 @@ app.post('/cus_register', (req, res) => {
           var scheme_name = results[0].name;
           var amount = results[0].amount;
           var no_installment = results[0].no_installment;
-          var installment_amount = (amount/no_installment);
+          var installment_amount = Math.round(amount/no_installment);
           var duration  = results[0].duration;
            
         }
@@ -352,7 +352,7 @@ app.post('/scheme', auth, (req, res) => {
     var date = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
     var amount = req.body.Amount;
     var install  = req.body.instl;
-    var install_amount  = (amount/install);
+    var install_amount  = Math.round(amount/install);
 
     const data = {
         "name": req.body.name,
@@ -654,7 +654,7 @@ app.post('/installment', auth,function (req,res) {
             var remaining = 0;
             var cus_amount = results[0].remaining_amount;
             var installment_amount = req.body.amount;
-            var remaining = cus_amount - installment_amount;
+            var remaining = Math.round(cus_amount - installment_amount);
             // console.log(remaining);
             // updating installment no
            
@@ -699,10 +699,10 @@ app.post('/installment', auth,function (req,res) {
                         if(tim2 > tim && remaining_install > 1 ){
                             status  = "Delayed";
                             var amount1 = req.body.amount;
-                            var fine  = (amount1*2)/100;
-                            amount = (amount*1)+(amount**1);
+                            var fine  = Math.round((amount1*2)/100);
+                            amount = Math.round(amount*1)+(amount**1);
                             remaining_install = remaining_install - 1;
-                            remaining = cus_amount - amount;
+                            remaining = Math.round(cus_amount - amount);
                         }else{
                             status = "Late";
                            fine = 50;

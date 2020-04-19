@@ -153,7 +153,7 @@
     
                         <% }) %>
                         <!-- <%var scheme_amount = print[0].amount + print[0].remaining %> -->
-                        <% var remaining = scheme_amount - mot %>
+                        <% var remaining = Math.round(scheme_amount - mot) %>
                         <ul class="nav">
                             <li>
                                 <a href="/view_scheme">
@@ -188,7 +188,7 @@
                             </li>
                             <% if(remaining == 0){%>
                             <li>
-                                <a href="#">
+                                <a href="#" class="text-success">
                                     <i class="glyphicon glyphicon-heart-empty"></i>
                                     You Loan is Over </a>
                             </li>
@@ -237,9 +237,9 @@
                                 <td><%= user.fine%></td>
                                 <td><%= user.ins_date%></td>
                                 <td><%= user.schedule_date%></td>
-                                <%if(user.status == "Delayed"){%>
+                                <!-- <%if(user.status == "Delayed"){%>
                                 <%  cnt++ %>
-                                <%}%>
+                                <%}%> -->
                                 <% }) %>
     
     
