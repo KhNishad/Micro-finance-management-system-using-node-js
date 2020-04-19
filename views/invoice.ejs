@@ -229,13 +229,17 @@
                             <% var cnt=1 %>
                             <% print.forEach(function (user) { %>
                             <tr>
+                                
                                 <td><%= cnt++ %></td>
                                 <td><%= user.amount %></td>
                                 <td><%= user.remaining %></td>
                                 <td><%= user.status%></td>
                                 <td><%= user.fine%></td>
                                 <td><%= user.ins_date%></td>
-                                <td><%= user.sc_date%></td>
+                                <td><%= user.schedule_date%></td>
+                                <%if(user.status == "Delayed"){%>
+                                <%  cnt++ %>
+                                <%}%>
                                 <% }) %>
     
     

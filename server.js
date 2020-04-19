@@ -696,7 +696,7 @@ app.post('/installment', auth,function (req,res) {
                     
                     if(results[0].Time < time)
                     {
-                        if(tim2 > tim){
+                        if(tim2 > tim && remaining_install > 1 ){
                             status  = "Delayed";
                             var amount1 = req.body.amount;
                             var fine  = (amount1*2)/100;
@@ -729,13 +729,13 @@ app.post('/installment', auth,function (req,res) {
                  
             })
             // updating the schedule status
-            if (status == "Delayed") {
+            if (status == "Delayed" && remaining_install > 0) {
                 var loop = 2;
             }
             else {
                 var loop = 1;
             }
-            console.log(loop);
+           // console.log(loop);
             
             for (var i = 1; i <= loop; i++) {
                 con.query(`UPDATE schedule SET status = 'paid' WHERE cus_id = '${cusID}' AND install_no = '${install_no}'`, function (error, results) {
