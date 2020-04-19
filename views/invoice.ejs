@@ -148,8 +148,8 @@
                         <%var mot = 0 %>
                         <% var fine  = 0 %>
                         <% print.forEach(function (user) { %>
-                        <% mot  = mot + user.amount %>
-                        <% fine = fine + user.fine %>
+                        <% mot  =Math.round(mot + user.amount)%>
+                        <% fine = Math.round(fine + user.fine) %>
     
                         <% }) %>
                         <!-- <%var scheme_amount = print[0].amount + print[0].remaining %> -->
@@ -233,13 +233,17 @@
                                 <td><%= cnt++ %></td>
                                 <td><%= user.amount %></td>
                                 <td><%= user.remaining %></td>
+                                <%if(user.status == "Delayed" || user.status == "Late" ){%>
+                                 <td class="text-danger"><%= user.status%></td>
+                                <%}%>
+                                <%if(user.status != "Delayed"  && user.status != "Late"){%>
                                 <td><%= user.status%></td>
+                                <%}%>
+
                                 <td><%= user.fine%></td>
                                 <td><%= user.ins_date%></td>
                                 <td><%= user.schedule_date%></td>
-                                <!-- <%if(user.status == "Delayed"){%>
-                                <%  cnt++ %>
-                                <%}%> -->
+                                
                                 <% }) %>
     
     

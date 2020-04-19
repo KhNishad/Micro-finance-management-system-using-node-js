@@ -171,7 +171,7 @@ app.get('/index', auth,  (req, res) => {
     // res.render('index.ejs')
      let datee = new Date((new Date()).getTime());
      datee = datee.toISOString().slice(0, 10)
-    console.log(datee);
+   // console.log(datee);
     
 
     con.query(`SELECT COUNT(Time) as  t FROM schedule WHERE Time = '${datee}' AND status = 'unpaid'`, function (err, result) {
@@ -180,7 +180,7 @@ app.get('/index', auth,  (req, res) => {
             throw err;
         } else {
             obj = { print: result };
-            console.log(result);
+            //console.log(result);
             
             res.render('index.ejs', obj);
         }
@@ -779,6 +779,8 @@ app.get('/invoice/:id', auth, (req, res) => {
            
             
              invoice = { print: result };
+            //  console.log(result);
+             
          
             res.render('invoice.ejs', invoice)
         }
@@ -1010,7 +1012,7 @@ app.get('/today',(req,res)=>{
             res.send(error)
         }
         else {
-            console.log(results);
+           // console.log(results);
             
             obj2 = { print: results };
             res.render('today.ejs', obj2);
