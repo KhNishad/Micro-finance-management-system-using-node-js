@@ -1,4 +1,4 @@
-This app is built with nodeJs express framework and sql database in the forntend i have used html css and bootstrap. 
+This app is built with nodeJs express framework and sql database. In the forntend i have used html css and bootstrap. 
 
 This app can help keep record of customer who has taken loan. Admin can give loan by registering a customer with his information.
 Admin can add schemes to the system.
@@ -21,9 +21,9 @@ Customer info:
 
 
  #you must need to have node installed on your pc.
- #after downloading open the app in vscode(your editor) and run command form terminal > npm install
+ #after downloading open the app in vscode(your editor) and run command from terminal > npm install
 
- if will install al the dependencies and then run the server.js in your browser hit server 3000 to see the result.
+ if will install al the dependencies and then run the server.js in your browser, hit server 3000 to see the result.
 
 
  
