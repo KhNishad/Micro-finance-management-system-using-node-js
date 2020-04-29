@@ -213,7 +213,7 @@ app.get('/scheme', auth, (req, res) => {
 
 // sending data from database to dropdowns
 
-app.get('/cus_register', (req, res) => {
+app.get('/cus_register',auth, (req, res) => {
     // res.render('cus_register.ejs');
 
 
@@ -232,7 +232,7 @@ app.get('/cus_register', (req, res) => {
 // customer id in loan
 // customer registertion
 
-app.post('/cus_register', (req, res) => {
+app.post('/cus_register',auth, (req, res) => {
 
     // img
     upload(req, res, (error) => {
