@@ -102,12 +102,14 @@ app.post('/login',(req,res) => {
                     res.redirect('/index');
                 }
                 else {
-                    res.redirect('/notifi');
+                    var id = "password not match";
+                    res.redirect('/notifi/' + id);
+
                   }
             }
             else {
-                res.send('Email Doesnt exits');
-
+                var id = "email not exits";
+                res.redirect('/notifi/' + id);
             }
         }
     });
@@ -115,8 +117,16 @@ app.post('/login',(req,res) => {
 });
              
 // render notifi
-app.get('/notifi',(req,res)=>{
-    res.render("notifi.ejs");
+app.get('/notifi/:id',(req,res)=>{
+    var id  = req.params.id;
+   // console.log(id);
+    
+     var data = 
+     {
+         msg: id
+     }
+    var data = { data: data }
+    res.render("notifi.ejs", data);
 })
 
 //render  registration
@@ -145,11 +155,15 @@ app.post('/register', (req,res) => {
         if (error) {
             throw(error);
         } else{
-            console.log(results);
+           // console.log(results);
             
             if(results[0])
             {
-                res.send("Email Already Exits!");
+                var id = "Email Already Exits";
+                var data = {
+                    msg : id
+                }
+                res.redirect("/notifi/" + id);
             }
             else{
                 con.query('INSERT INTO users SET ?', data, function (error, results, fields) {
@@ -900,14 +914,14 @@ app.post('/forgot', (req, res) => {
             res.send(error);
         }
         var pass = results[0].pass;
-        res.send("Your Password was"+pass)
+        res.send("Your Password was " +pass)
     })
 })
 
 // header
-app.get('/header',(req,res)=>{
-    res.render('header.ejs');
-});
+// app.get('/header',(req,res)=>{
+//     res.render('header.ejs');
+// });
 // generate pdf for profile
 
 app.get("/generateReport/:id",auth, (req, res) => {

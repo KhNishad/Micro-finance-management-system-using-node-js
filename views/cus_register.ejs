@@ -1,22 +1,37 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register a Customer</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="/css/register.css">
+    <script src="/js/register.js"></script>
+</head>
+<body>
+    
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<link rel="stylesheet" href="/css/register.css">
-<script src="/js/register.js"></script>
-<h4 style="text-align: center; color:#17A2B8;" class="p-4 bg-white">Customer Registration Form</h4>
+
+<!-- <h4 style="text-align: center; color:#17A2B8;" class="p-4 bg-white">Customer Registration Form</h4> -->
+<!-- <div class="container"> -->
+
+
 <form action="/cus_register" method="POST" enctype="multipart/form-data">
+    <h4 style="text-align: center; color:#17A2B8;" class="p-4">Customer Registration Form</h4>
+
     <label>
-        <p class="label-txt">ENTER YOUR NAME</p>
+        <p class="label-txt">ENTER CUSTOMER NAME</p>
         <input type="text" id="name" name="name" class="input">
         <div class="line-box">
             <div class="line"></div>
         </div>
     </label>
     <label>
-        <p class="label-txt">ENTER YOUR CONTACT</p>
+        <p class="label-txt">ENTER CUSTOMER CONTACT</p>
         <input type="text" id="contact" name="contact" class="input">
         <div class="line-box">
             <div class="line"></div>
@@ -24,14 +39,14 @@
     </label>
 
     <label>
-        <p class="label-txt">ENTER YOUR ADDRESS</p>
+        <p class="label-txt">ENTER CUSTOMER ADDRESS</p>
         <input type="text" name="address" id="address" class="input">
         <div class="line-box">
             <div class="line"></div>
         </div>
     </label>
     <label>
-        <p class="label-txt">ENTER YOUR ASSET</p>
+        <p class="label-txt">ENTER CUSTOMER ASSET</p>
         <input type="text" name="asset" id="asset" class="input">
         <div class="line-box">
             <div class="line"></div>
@@ -62,12 +77,14 @@
         <div class="form-group" >
             <div class="col-sm-9">
                 
-                 <input  class="form-control" type="file" id="img" name="img">
+                 <input  class="form-control" type="file" id="img" name="img" required>
             </div>
         </div>
+        
     </div>
-    <button type="submit">submit</button>
-
-    
-   
+        <button type="submit">submit</button>
 </form>
+<!-- </div> -->
+</body>
+
+</html>
