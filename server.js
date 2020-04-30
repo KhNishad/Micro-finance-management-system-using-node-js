@@ -92,7 +92,7 @@ app.post('/login',(req,res) => {
         } else {
             // console.log('The solution is: ', results);
             // future date creation
-            var date2 = new Date((new Date()).getTime() + (2 * (30 * 86400000)))
+            //var date2 = new Date((new Date()).getTime() + (2 * (30 * 86400000)))
            
             
             if (results.length > 0) {
@@ -459,18 +459,37 @@ app.get('/delete_scheme/:id', auth, (req, res) => {
     // sending all data as object
 
     var did = req.params.id;
+    console.log(did);
+    
     // console.log(did);
-
-    con.query(`delete from scheme where scheme_id = ${did}`, function (error, results) {
+    con.query(`select * from loan_info where scheme_id = ${did}`, function (error, results) {
         if (error) {
             throw error;
         }
         else {
-            // window.alert("Deleted Successfully")
-            res.redirect("/view_scheme")
+            if(results.length > 0 )
+            {
+                res.send('Can not delete. This scheme is active')
+               
+            }
+            else{
+                con.query(`delete from scheme where scheme_id = ${did}`, function (error, results) {
+                    if (error) {
+                        throw error;
+                    }
+                    else {
+                        // window.alert("Deleted Successfully")
+                        res.redirect("/view_scheme")
+                    }
+
+
+                })
+
+            }
+            
         }
 
-
+    
     })
 })
 
