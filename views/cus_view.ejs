@@ -21,6 +21,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/97c02f89cd.js"></script>
+
         <link rel="stylesheet" href="/css/cus_view.css">
         <link rel="stylesheet" href="/css/header.css">
 
@@ -47,7 +49,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/view_scheme">
                         <i class="fa fa-envelope-o">
-                            <!-- <span class="badge badge-danger">11</span> -->
                         </i>
                         Schemes
                     </a>
@@ -55,15 +56,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/view_loan">
                         <i class="fa fa-globe">
-                            <!-- <span class="badge badge-success">11</span> -->
                         </i>
                         Loans
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/installment2">
+                    <a class="nav-link" href="/installment">
                         <i class="fa fa-money">
-                            <!-- <span class="badge badge-success">11</span> -->
                         </i>
                         Installments
                     </a>
@@ -92,8 +91,9 @@
             <div class="input-group">
                 
                 <!-- Search form -->
-                <input class="form-control  search" type="number" id="search" name="search" placeholder="Search Customer ID" aria-label="Search">
-                    <!-- <button type="submit" class="btn btn-primary">Search</button> -->
+                <abbr title="Search"><i class="fas fa-search-location fa-3x"></i></abbr>
+               
+                <input class="form-control  search" type="number" id="search" name="search"  placeholder="Search Customer ID" aria-label="Search" >
             </div>
           </div>
         </form>
@@ -110,10 +110,7 @@
                     <th scope="col">Scheme Name</th>
                     <!-- <th scope="col">Scheme</th> -->
                     <th scope="col">Date</th>
-                    <th></th>
                     <th>Action</th>
-                    <th></th>
-               
                 </tr>
             </thead>
             <tbody>
@@ -132,16 +129,11 @@
                     <td><%= user.scheme_name %></td>
                     <td><%= user.date %></td>
                     <td>
-                        <a href="/action/<%=user.cus_id %>" class="btn btn-primary" <% var id  = user.cus_id %></a>Edit</a>
-                        <!-- <a href="/delete/<%=user.cus_id %>" class="btn btn-danger">Delete</a> -->
-                        
-                    </td>
-                    <td>
-                    <a href="/profile/<%=user.cus_id%>" class="btn btn-success">Profile</a>
-
-                    </td>
-                    <td>
-                        <a href="/info/<%=user.scheme_id%>/<%=user.cus_id%>" class="btn btn-info">Info</a>
+                        <a href="/action/<%=user.cus_id %>" ><abbr title="Edit Customer Info"><i class="fas fa-edit fa-2x text-info "></i></abbr></a>
+                        <a href="/delete/<%=user.cus_id %>" onclick="return confirm('Are You sure ?');"><abbr title="Delete Customer"><i class=" text-danger fas fa-trash-alt fa-2x"></i></abbr></a>
+                        <a href="/profile/<%=user.cus_id%>"></i><abbr title="GO to Profile"><i class="far fa-id-card fa-2x"></i></abbr></a>
+                        <a href="/info/<%=user.scheme_id%>/<%=user.cus_id%>"><abbr title="Loan Info"><i class=" text-success fas fa-info fa-2x"></i></abbr></a>
+         
                     </td>
         
                     <% }) %>

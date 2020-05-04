@@ -203,7 +203,7 @@ app.get('/index', auth,  (req, res) => {
 })
 //render sceheme file
 app.get('/scheme', auth, (req, res) => {
-    res.render('scheme.ejs')
+    res.render('scheme.ejs',{print : "nid"})
 
 });
 
@@ -363,28 +363,53 @@ app.post('/cus_register',auth, (req, res) => {
 // add schemes
 app.post('/scheme', auth, (req, res) => {
     // sending all data as object
-    var date = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-    var amount = req.body.Amount;
-    var install  = req.body.instl;
-    var install_amount  = Math.round(amount/install);
+    if (req.body.scheme_id){
+     updateScheme(req,res);
+    }else{
+        var date = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+        var amount = req.body.Amount;
+        var install = req.body.instl;
+        var install_amount = Math.round(amount / install);
 
-    const data = {
-        "name": req.body.name,
-        "Amount": req.body.Amount,
-        "r_asset" : req.body.r_asset,
-        "no_installment": req.body.instl,
-        "install_amount": install_amount,
-        "duration": req.body.Duration,
-        date
+        const data = {
+            "name": req.body.name,
+            "Amount": req.body.Amount,
+            "r_asset": req.body.r_asset,
+            "no_installment": req.body.instl,
+            "install_amount": install_amount,
+            "duration": req.body.Duration,
+            date
 
+        }
+        //    query for inserting data
+        con.query('INSERT INTO scheme SET ?', data, function (error, results, fields) {
+            if (error) throw res.send(error)
+            res.redirect("/scheme_view");
+
+        });
     }
-    //    query for inserting data
-    con.query('INSERT INTO scheme SET ?', data, function (error, results, fields) {
-        if (error) throw res.send(error)
-        res.redirect("/index");
-       
-    });
+  
 });
+
+// function for updating the scheme
+function updateScheme(req,res) {
+  //  console.log(req.body);
+    
+    var id = req.body.scheme_id;
+    var name = req.body.name;
+    var amount = req.body.Amount;
+    var r_asset = req.body.r_asset;
+    var no_installment = req.body.instl;
+    var duration = req.body.Duration;
+    // "scheme": req.body.scheme,
+
+
+    con.query(`UPDATE scheme SET name = '${name}', amount = '${amount}', r_asset = '${r_asset}', no_installment = '${no_installment}', duration = '${duration}' WHERE scheme_id = ${id}`, function (error, results) {
+        if (error) throw res.send(error);
+        res.redirect("/view_scheme");
+    })
+    
+}
 
 
 // render view_scheme 
@@ -405,14 +430,14 @@ app.get("/view_scheme", auth, (req, res) => {
     });
 });
 
-// send data from database to scheme_action page
+// send data from database to scheme page for update 
 app.get('/scheme_action/:id', auth, function (req, res) {
 
     // console.log(req.params.id);
     let Id = req.params.id;
     if (req.params.id) {
         var customerEdit = {}
-        var dropdown = {};
+       
         con.query(`SELECT * FROM scheme WHERE scheme_id = ${Id}`, function (error, result) {
 
             if (error) {
@@ -424,7 +449,7 @@ app.get('/scheme_action/:id', auth, function (req, res) {
                 schemeEdit = { print: result };
                 //console.log(customerEdit.print[0].cus_name);
 
-                res.render('scheme_action.ejs', schemeEdit)
+                res.render('scheme.ejs', schemeEdit)
 
             }
         })
@@ -432,27 +457,6 @@ app.get('/scheme_action/:id', auth, function (req, res) {
     }
 })
 
-// send updated data from scheme_action to database
-app.post('/scheme_action', auth, (req, res) => {
-    // sending all data as object
-
-
-    // console.log(req.params.id);
-    //var date = dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
-    var id = req.body.id;
-    var name = req.body.name;
-    var amount = req.body.Amount;
-    var r_asset = req.body.r_asset;
-    var no_installment =  req.body.Installment;
-    var duration =  req.body.Duration;
-    // "scheme": req.body.scheme,
-
-
-    con.query(`UPDATE scheme SET name = '${name}', amount = '${amount}', r_asset = '${r_asset}', no_installment = '${no_installment}', duration = '${duration}' WHERE scheme_id = ${id}`, function (error, results) {
-        if (error) throw res.send(error);
-        res.redirect("/view_scheme");
-    })
-})
 // delete scheme 
 
 app.get('/delete_scheme/:id', auth, (req, res) => {
@@ -662,12 +666,13 @@ app.get("/view_loan", auth, (req, res) => {
 
 //render installment module
 app.get('/installment', auth,function (req,res) {
-    res.render('installment.ejs');
+    res.render('installment.ejs',{print : "hey"});
     
 })
 
 // installment taking from html form
 app.post('/installment', auth,function (req,res) {
+    
     var cusID = req.body.ID ;
     var time = req.body.time;
     var amount = req.body.amount;
@@ -840,7 +845,7 @@ app.get('/installment2/:id', auth, function (req, res) {
                 schemeEdit = { print: result };
                 //console.log(customerEdit.print[0].cus_name);
 
-                res.render('installment2.ejs', schemeEdit);
+                res.render('installment.ejs', schemeEdit);
 
             }
         })

@@ -93,6 +93,7 @@
                     <th scope="col">Installment Amount</th>
                     <th scope="col">Duration</th>
                     <th scope="col">Added Date</th>
+                    <th></th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -109,7 +110,10 @@
     <td><%= user.duration %></td>
     <td><%= user.date %></td>
     <td>
-        <a href="/scheme_action/<%=user.scheme_id %>"  class="btn btn-primary"<% var id  = user.scheme_id %></a>Edit</a>
+                <a href="/scheme_action/<%=user.scheme_id %>" class="btn btn-primary" <% var id  = user.scheme_id %></a>Edit</a>
+
+    </td>
+    <td>
         <a href="/delete_scheme/<%=user.scheme_id %>" onclick="return confirm('Are You Sure?');" class="btn btn-danger">Delete</a>
     </td>
 
