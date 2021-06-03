@@ -4,6 +4,7 @@ This app can help keep record of customer who has taken loan. Admin can give loa
 Admin can add schemes to the system.
 
 Customer info:
+ 
  Customer has to give his name , address, contact ,image and asset(what he has to take the loan) and the price off his asset.
 
  if his asset is good then he can take the loan.
@@ -21,7 +22,7 @@ Customer info:
 
 
  #you must need to have node installed on your pc.
- #after downloading open the app in vscode(your editor) and run command from terminal > npm install
+ #after downloading open the app in vscode(your editor) and run command from terminal > npm install.
 
  if will install al the dependencies and then run the server.js in your browser, hit server 3000 to see the result.
 
